@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mesto</title>
+        <link rel="stylesheet" href="./pages/index.css">
+    </head>
+    <body class="page">
+        <header class="header">
+            <img
+                src="./images/logo.svg"
+                class="header__logo"
+                alt="логотип Mesto"
+            >
+        </header>
+        <main class="content">
+            <section class="profile">
+                <img
+                    src="./images/image.jpg"
+                    class="profile__avatar"
+                    alt="фото Жак-Ив Кусто"
+                >
+                <div class="profile__info">
+                    <div class="profile__edit">
+                        <h1 class="profile__title">Жак-Ив Кусто</h1>
+                        <button
+                            class="profile__edit-button"
+                            type="button"
+                        ></button>
+                    </div>
+                    <p class="profile__subtitle"></p>
+                </div>
+                <button class="profile__add-button" type="button"></button>
+            </section>
+            <section class="cards">
+                <div class="cards__item">
+                    <img
+                        src="./images/1.jpg"
+                        class="cards__image"
+                        alt="изображение храм Карачаевск"
+                    >
+                    <div class="cards__info">
+                        <h2 class="cards__description">Карачаевск</h2>
+                        <button type="button" class="cards__like"></button>
+                    </div>
+                </div>
+                <div class="cards__item">
+                    <img
+                        src="./images/2.jpg"
+                        class="cards__image"
+                        alt="изображение гора Эльбрус"
+                    >
+                    <div class="cards__info">
+                        <h2 class="cards__description">Гора Эльбрус</h2>
+                        <button type="button" class="cards__like"></button>
+                    </div>
+                </div>
+                <div class="cards__item">
+                    <img
+                        src="./images/3.jpg"
+                        class="cards__image"
+                        alt="изображение горы в Домбаe"
+                    >
+                    <div class="cards__info">
+                        <h2 class="cards__description">Домбай</h2>
+                        <button type="button" class="cards__like"></button>
+                    </div>
+                </div>
+                <div class="cards__item">
+                    <img
+                        src="./images/4.jpg"
+                        class="cards__image"
+                        alt="изображение гора Эльбрус"
+                    >
+                    <div class="cards__info">
+                        <h2 class="cards__description">Гора Эльбрус</h2>
+                        <button type="button" class="cards__like"></button>
+                    </div>
+                </div>
+                <div class="cards__item">
+                    <img
+                        src="./images/5.jpg"
+                        class="cards__image"
+                        alt="изображение горы в Домбаe"
+                    >
+                    <div class="cards__info">
+                        <h2 class="cards__description">Домбай</h2>
+                        <button type="button" class="cards__like"></button>
+                    </div>
+                </div>
+                <div class="cards__item">
+                    <img
+                        src="./images/6.jpg"
+                        class="cards__image"  
+                        alt="изображение храм Карачаево-Черкессии"
+                    >
+                    <div class="cards__info">
+                        <h2 class="cards__description">Карачаево-Черкессия</h2>
+                        <button type="button" class="cards__like"></button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__author">&copy; 2020 Mesto Russia</p>
+        </footer>
+        <section class="popup">
+            <div class="popup__container">
+                <button type="button" class="popup__close"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup___form">
+                    <label>
+                        <input
+                            type="text"
+                            value
+                            class="popup__input popup__input_form_username"
+                            name="username"
+                            required
+                            placeholder="Введите имя"
+                        >
+                    </label>
+                    <label>
+                        <input
+                            type="text"
+                            value
+                            class="popup__input popup__input_form_activity"
+                            name="activity"
+                            required
+                            placeholder="Вид деятельности"
+                        >
+                    </label>
+                    <button type="submit" class="popup__submit">
+                        Сохранить
+                    </button>
+                </form>
+            </div>
+        </section>
+        <script defer src="./scripts/scripts.js"></script>
+    </body>
+</html>
