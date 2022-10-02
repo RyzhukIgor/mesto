@@ -4,7 +4,7 @@ const popupBtn = document.querySelector(".popup");
 const popupActive = "popup_active";
 const popupClose = document.querySelector(".popup__close");
 
-const formElement = document.querySelector(".popup___form");
+const formElement = document.querySelector(".popup__form");
 const nameInput = document.querySelector(".popup__input_form_username");
 const jobInput = document.querySelector(".popup__input_form_activity");
 const saveBtn = document.querySelector(".popup__submit");
