@@ -1,15 +1,15 @@
 .profile__add-button {
-    background-image: url(../../../images/Add_Button.svg);
+    background-image: url(../../../images/add_button.svg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 150px;
-    height: 50px;
-    background-color: #000000;
+    background-color: transparent;
     align-self: center;
     margin-left: auto;
-    padding: 0;
-    border: 0;
+    border-radius: 2px;
+    border: 2px solid #FFFFFF;
+    width: 150px;
+    height: 50px;
+    padding: 0px;
 }
 
 .profile__add-button:hover {
@@ -21,6 +21,7 @@
     .profile__add-button {
         width: 282px;
         margin: 0;
-        background-image: url(../../../images/Add_ButtonL.svg);
+        background-size: 16px 16px;
     }
 }
+

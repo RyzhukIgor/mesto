@@ -5,33 +5,32 @@ const popupActive = "popup_active";
 const popupClose = document.querySelector(".popup__close");
 
 const formElement = document.querySelector(".popup__form");
-const nameInput = document.querySelector(".popup__input_form_username");
-const jobInput = document.querySelector(".popup__input_form_activity");
-const saveBtn = document.querySelector(".popup__submit");
+const nameInput = document.querySelector(".popup__input-username");
+const jobInput = document.querySelector(".popup__input-activity");
 
-const headingUsername = document.querySelector('h1');
-headingUsername.textContent = 'Жак-Ив Кусто';
-const headingSubtitle = document.querySelector('p');
-headingSubtitle.textContent = 'Исследователь океана';
+const headingUsername = document.querySelector(".profile__title");
+const headingSubtitle = document.querySelector(".profile__subtitle");
 
-openProfileBtn.addEventListener("click", () => {
+
+function openProfile() {
     popupBtn.classList.add(popupActive);
     nameInput.value = headingUsername.textContent;
     jobInput.value = headingSubtitle.textContent;
-});
+}
 
-popupClose.addEventListener("click", () => { 
-    popupBtn.classList.remove(popupActive);
-});
+openProfileBtn.addEventListener("click", openProfile);
 
-saveBtn.addEventListener("click", () => { 
+function popupcloses() {
     popupBtn.classList.remove(popupActive);
-}); 
+};
+
+popupClose.addEventListener("click", popupcloses);
 
 function formSubmitHandler (evt) {
     evt.preventDefault(); 
     headingUsername.textContent = nameInput.value;
     headingSubtitle.textContent = jobInput.value;
+    popupcloses();
 };
 
 formElement.addEventListener('submit', formSubmitHandler); 

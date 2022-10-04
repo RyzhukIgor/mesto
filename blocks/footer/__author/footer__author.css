@@ -1,5 +1,5 @@
 .footer__author {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -14,5 +14,6 @@
         font-size: 14px;
         line-height: 17px;
         padding-left: 19px;
+        padding-bottom: 36px;
     }
 }

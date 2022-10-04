@@ -1,5 +1,5 @@
-.cards__description{
-    font-family: 'Inter';
+.card__description{
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
