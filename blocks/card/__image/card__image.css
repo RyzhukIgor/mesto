@@ -1,8 +1,12 @@
 .card__image {
-    max-height: 282px;
+    height: 282px;
     width: 100%;
     display: block;
     border-radius: 10px 10px 0 0;
     object-fit: cover;
     object-position: center;
+}
+
+.card__image:hover {
+    cursor: pointer;
 }
