@@ -45,7 +45,7 @@
             <p class="footer__author">&copy; 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup">
+        <div class="popup profile-popup">
             <div class="popup__container">
                 <button
                     type="button"
@@ -81,14 +81,11 @@
             <div class="popup__container">
                 <button
                     type="button"
-                    class="popup__close popup__close_type_image-profile"
+                    class="popup__close"
                     aria-label="Закрыть"
                 ></button>
                 <h2 class="popup__title">Новое место</h2>
-                <form
-                    class="popup__form popup__form_type_add-image"
-                    name="data"
-                >
+                <form class="popup__form" name="formImage">
                     <input
                         type="text"
                         value
@@ -114,7 +111,7 @@
             <article class="popup__large-container">
                 <button
                     type="button"
-                    class="popup__close popup__close_type_hide-image"
+                    class="popup__close"
                     aria-label="Закрыть"
                 ></button>
                 <img src="#" class="popup__image" alt="" />
