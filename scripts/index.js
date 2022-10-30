@@ -4,7 +4,6 @@ const openAddImageBtn = document.querySelector(".profile__add-button");
 const popupAddImage = document.querySelector(".popup_type_add-image");
 const popupEditProfile = document.querySelector(".profile-popup");
 const popupFullImage = document.querySelector(".popup_type_reveal-image");
-const popupActive = "popup_active";
 
 const formElementsProfile = document.forms.data;
 const nameInput = document.querySelector(".popup__input_type_username");
@@ -21,6 +20,9 @@ const fullImage = document.querySelector(".popup__image");
 const fullImageDescription = document.querySelector(".popup__description");
 
 const closeButtons = document.querySelectorAll(".popup__close");
+
+const popupOverlay = document.querySelectorAll(".popup");
+
 
 const initialCards = [
     {
@@ -49,27 +51,46 @@ const initialCards = [
     },
 ];
 
+
+
 const openPopup = function (popup) {
-    popup.classList.add(popupActive);
+    popup.classList.add('popup_active');
+    document.addEventListener('keydown', closePopupOnEsc)
 };
 
 const closePopup = function (popup) {
-    popup.classList.remove(popupActive);
+    popup.classList.remove('popup_active');
+    document.removeEventListener('keydown', closePopupOnEsc)
 };
 
 function openProfile() {
     nameInput.value = headingUsername.textContent;
     jobInput.value = headingSubtitle.textContent;
     openPopup(popupEditProfile);
-}
+};
 
 openEditBtn.addEventListener("click", openProfile);
 openAddImageBtn.addEventListener("click", () => openPopup(popupAddImage));
+
+const closePopupOnEsc = function (evt) {
+    if (evt.key === "Escape") {
+      const popupActive = document.querySelector(".popup_active")
+      closePopup(popupActive);
+    }
+};
 
 closeButtons.forEach((button) => {
     const popup = button.closest(".popup");
     button.addEventListener("click", () => closePopup(popup));
 });
+
+popupOverlay.forEach( popupElement => {
+    popupElement.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('profile-popup') || evt.target.classList.contains('popup_type_add-image')) {
+        closePopup(popupElement);
+      }
+    });
+  });
 
 const createCard = function (name, link) {
     const cardsTemplate = document.querySelector(".cards-template").content;
@@ -127,6 +148,8 @@ function handleProfileFormSubmit(evt) {
     headingSubtitle.textContent = jobInput.value;
     closePopup(popupEditProfile);
 }
+
+
 
 formElementsProfile.addEventListener("submit", handleProfileFormSubmit);
 addNewImageForm.addEventListener("submit", saveNewCard);

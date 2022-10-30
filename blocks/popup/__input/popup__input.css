@@ -10,11 +10,12 @@
     line-height: 17px;
     color: #000000;
     border-bottom: 1px solid rgb(0, 0, 0, 0.2);
-    margin-bottom: 48px;
+    margin-bottom: 0;
 }
 
-.popup__input:first-of-type {
-    margin-bottom: 32px;
+.popup__input:last-of-type {
+    margin-bottom: 0px;
+    padding-top: 13px;
 }
 
 

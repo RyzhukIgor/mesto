@@ -53,23 +53,31 @@
                     aria-label="Закрыть"
                 ></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" name="data">
+                <form class="popup__form" name="data" novalidate>
                     <input
+                        id="input-name"
                         type="text"
                         value
                         class="popup__input popup__input_type_username"
                         name="username"
                         required
                         placeholder="Введите имя"
+                        minlength="2"
+                        maxlength="40"
                     />
+                    <span class="popup__error input-name-error"></span>
                     <input
+                        id="description-name"
                         type="text"
                         value
                         class="popup__input popup__input_type_activity"
                         name="activity"
                         required
                         placeholder="Вид деятельности"
+                        minlength="2"
+                        maxlength="200"
                     />
+                    <span class="popup__error description-name-error"></span>
                     <button type="submit" class="popup__submit">
                         Сохранить
                     </button>
@@ -85,23 +93,29 @@
                     aria-label="Закрыть"
                 ></button>
                 <h2 class="popup__title">Новое место</h2>
-                <form class="popup__form" name="formImage">
+                <form class="popup__form" name="formImage" novalidate>
                     <input
+                        id="image-name"
                         type="text"
                         value
                         class="popup__input popup__input_type_username popup__input_type_image-name"
                         name="username"
                         required
                         placeholder="Название"
+                        minlength="2"
+                        maxlength="40"
                     />
+                    <span class="popup__error image-name-error"></span>
                     <input
-                        type="text"
+                        id="url-address"
+                        type="url"
                         value
                         class="popup__input popup__input_type_activity popup__input_type_image-src"
                         name="activity"
                         required
                         placeholder="Ссылка на картинку"
                     />
+                    <span class="popup__error url-address-error"></span>
                     <button type="submit" class="popup__submit">Создать</button>
                 </form>
             </div>
@@ -134,6 +148,7 @@
             </article>
         </template>
 
+        <script defer src="./scripts/validate.js"></script>
         <script defer src="./scripts/index.js"></script>
     </body>
 </html>
