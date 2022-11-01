@@ -7,5 +7,6 @@
     color: red;
     padding-top: 5px;
     visibility: hidden;
-
+    display: block;
+    min-height: 30px;
 }

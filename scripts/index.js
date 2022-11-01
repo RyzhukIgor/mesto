@@ -1,11 +1,11 @@
-const openEditBtn = document.querySelector(".profile__edit-button");
+const openEditBtn = document.querySelector(".profile__editor");
 const openAddImageBtn = document.querySelector(".profile__add-button");
 
 const popupAddImage = document.querySelector(".popup_type_add-image");
 const popupEditProfile = document.querySelector(".profile-popup");
 const popupFullImage = document.querySelector(".popup_type_reveal-image");
 
-const formElementsProfile = document.forms.data;
+const formElementProfile = document.forms.data;
 const nameInput = document.querySelector(".popup__input_type_username");
 const jobInput = document.querySelector(".popup__input_type_activity");
 const headingUsername = document.querySelector(".profile__title");
@@ -21,8 +21,8 @@ const fullImageDescription = document.querySelector(".popup__description");
 
 const closeButtons = document.querySelectorAll(".popup__close");
 
-const popupOverlay = document.querySelectorAll(".popup");
-
+const popupOverlays = document.querySelectorAll(".popup");
+const popupSubmit = addNewImageForm.querySelector(".popup__submit");
 
 const initialCards = [
     {
@@ -51,31 +51,29 @@ const initialCards = [
     },
 ];
 
-
-
 const openPopup = function (popup) {
-    popup.classList.add('popup_active');
-    document.addEventListener('keydown', closePopupOnEsc)
+    popup.classList.add("popup_active");
+    document.addEventListener("keydown", closePopupOnEsc);
 };
 
 const closePopup = function (popup) {
-    popup.classList.remove('popup_active');
-    document.removeEventListener('keydown', closePopupOnEsc)
+    popup.classList.remove("popup_active");
+    document.removeEventListener("keydown", closePopupOnEsc);
 };
 
 function openProfile() {
     nameInput.value = headingUsername.textContent;
     jobInput.value = headingSubtitle.textContent;
     openPopup(popupEditProfile);
-};
+}
 
 openEditBtn.addEventListener("click", openProfile);
 openAddImageBtn.addEventListener("click", () => openPopup(popupAddImage));
 
 const closePopupOnEsc = function (evt) {
     if (evt.key === "Escape") {
-      const popupActive = document.querySelector(".popup_active")
-      closePopup(popupActive);
+        const popupActive = document.querySelector(".popup_active");
+        closePopup(popupActive);
     }
 };
 
@@ -84,13 +82,13 @@ closeButtons.forEach((button) => {
     button.addEventListener("click", () => closePopup(popup));
 });
 
-popupOverlay.forEach( popupElement => {
-    popupElement.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('profile-popup') || evt.target.classList.contains('popup_type_add-image')) {
-        closePopup(popupElement);
-      }
+popupOverlays.forEach((popupElement) => {
+    popupElement.addEventListener("mousedown", (evt) => {
+        if (evt.target.classList.contains("popup_active")) {
+            closePopup(popupElement);
+        }
     });
-  });
+});
 
 const createCard = function (name, link) {
     const cardsTemplate = document.querySelector(".cards-template").content;
@@ -127,19 +125,25 @@ const createCard = function (name, link) {
     return cardElement;
 };
 
-const loadCards = function () {
+const loadinitialCards = function () {
     initialCards.forEach(function (card) {
         cardsArea.append(createCard(card.name, card.link));
     });
 };
 
-loadCards();
+loadinitialCards();
+
+const disabledButtonClass = (buttonElement) => {
+    buttonElement.classList.add("popup__submit_disabled");
+    buttonElement.disabled = true;
+};
 
 const saveNewCard = function (evt) {
     evt.preventDefault();
     cardsArea.prepend(createCard(imageName.value, imageSrc.value));
     evt.target.reset();
     closePopup(popupAddImage);
+    disabledButtonClass(popupSubmit);
 };
 
 function handleProfileFormSubmit(evt) {
@@ -149,7 +153,5 @@ function handleProfileFormSubmit(evt) {
     closePopup(popupEditProfile);
 }
 
-
-
-formElementsProfile.addEventListener("submit", handleProfileFormSubmit);
+formElementProfile.addEventListener("submit", handleProfileFormSubmit);
 addNewImageForm.addEventListener("submit", saveNewCard);

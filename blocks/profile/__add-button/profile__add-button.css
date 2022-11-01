@@ -1,5 +1,5 @@
 .profile__add-button {
-    background-image: url(/images/Addbutton.SVG);
+    background-image: url('../../../images/Plus.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -24,4 +24,3 @@
         background-size: 16px 16px;
     }
 }
-
