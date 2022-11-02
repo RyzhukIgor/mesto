@@ -22,7 +22,7 @@ const fullImageDescription = document.querySelector(".popup__description");
 const closeButtons = document.querySelectorAll(".popup__close");
 
 const popupOverlays = document.querySelectorAll(".popup");
-const popupSubmit = addNewImageForm.querySelector(".popup__submit");
+const popupSubmitAddImg = addNewImageForm.querySelector(".popup__submit");
 
 const initialCards = [
     {
@@ -125,25 +125,21 @@ const createCard = function (name, link) {
     return cardElement;
 };
 
-const loadinitialCards = function () {
+const loadInitialCards = function () {
     initialCards.forEach(function (card) {
         cardsArea.append(createCard(card.name, card.link));
     });
 };
 
-loadinitialCards();
-
-const disabledButtonClass = (buttonElement) => {
-    buttonElement.classList.add("popup__submit_disabled");
-    buttonElement.disabled = true;
-};
+loadInitialCards();
 
 const saveNewCard = function (evt) {
+    const inactiveButtonClass = configValidation.inactiveButtonClass;
     evt.preventDefault();
     cardsArea.prepend(createCard(imageName.value, imageSrc.value));
     evt.target.reset();
     closePopup(popupAddImage);
-    disabledButtonClass(popupSubmit);
+    disabledButton(popupSubmitAddImg, inactiveButtonClass);
 };
 
 function handleProfileFormSubmit(evt) {
