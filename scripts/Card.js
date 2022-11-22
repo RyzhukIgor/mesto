@@ -3,7 +3,7 @@ import {
     fullImageDescription,
     popupFullImage,
     openPopup,
-} from "./index.js";
+} from "./utils.js";
 
 export default class Card {
     constructor(data, templateSelector) {
@@ -26,6 +26,7 @@ export default class Card {
 
     _deleteCard() {
         this._element.remove();
+        this._element = null;
     }
 
     _viewFullImage() {
@@ -35,7 +36,7 @@ export default class Card {
         openPopup(popupFullImage);
     }
 
-    _creatCard() {
+    _containCard() {
         this._cardImage.src = this._image;
         this._cardDescription.textContent = this._name;
         this._cardImage.alt = this._name;
@@ -50,7 +51,7 @@ export default class Card {
         this._cardLike = this._element.querySelector(".card__like");
 
         this._setEventListeners();
-        this._creatCard();
+        this._containCard();
         return this._element;
     }
 
