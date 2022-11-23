@@ -10,6 +10,19 @@ export const openPopup = function (popup) {
     document.addEventListener("keydown", closePopupOnEsc);
 };
 
+const closePopupOnEsc = function (evt) {
+    if (evt.key === "Escape") {
+        const popupActive = document.querySelector(".popup_active");
+        closePopup(popupActive);
+    }
+};
+
+export const closePopup = function (popup) {
+    popup.classList.remove("popup_active");
+    document.removeEventListener("keydown", closePopupOnEsc);
+};
+
+
 export const initialCards = [
     {
         name: "Архыз",

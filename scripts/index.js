@@ -1,6 +1,6 @@
 import Card from "./Card.js";
 import { FormValidator, configValidation } from "./FormValidator.js";
-import { openPopup, initialCards } from "./utils.js";
+import { openPopup, closePopup, initialCards } from "./utils.js";
 
 const popupProfileOpenBtn = document.querySelector(".profile__editor");
 const popupAddImageBtn = document.querySelector(".profile__add-button");
@@ -22,11 +22,6 @@ const imageSrc = document.querySelector(".popup__input_type_image-src");
 const popupCloseBtn = document.querySelectorAll(".popup__close");
 const popupOverlays = document.querySelectorAll(".popup");
 
-const closePopup = function (popup) {
-    popup.classList.remove("popup_active");
-    document.removeEventListener("keydown", closePopupOnEsc);
-};
-
 function openProfile() {
     nameInput.value = headingUsername.textContent;
     jobInput.value = headingSubtitle.textContent;
@@ -36,12 +31,7 @@ function openProfile() {
 popupProfileOpenBtn.addEventListener("click", openProfile);
 popupAddImageBtn.addEventListener("click", () => openPopup(popupAddImage));
 
-const closePopupOnEsc = function (evt) {
-    if (evt.key === "Escape") {
-        const popupActive = document.querySelector(".popup_active");
-        closePopup(popupActive);
-    }
-};
+
 
 popupCloseBtn.forEach((button) => {
     const popup = button.closest(".popup");
