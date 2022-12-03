@@ -1,15 +1,9 @@
-import {
-    fullImage,
-    fullImageDescription,
-    popupFullImage,
-    openPopup
-} from "./utils.js";
-
 export default class Card {
-    constructor(data, templateSelector) {
+    constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._image = data.link;
         this._templateSelector = templateSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -27,13 +21,6 @@ export default class Card {
     _deleteCard() {
         this._element.remove();
         this._element = null;
-    }
-
-    _viewFullImage() {
-        fullImage.src = this._image;
-        fullImageDescription.textContent = this._name;
-        fullImage.alt = this._name;
-        openPopup(popupFullImage);
     }
 
     _containCard() {
@@ -58,6 +45,8 @@ export default class Card {
     _setEventListeners() {
         this._cardLike.addEventListener("click", () => this._likeCard());
         this._cardDelete.addEventListener("click", () => this._deleteCard());
-        this._cardImage.addEventListener("click", () => this._viewFullImage());
+        this._cardImage.addEventListener("click", () =>
+            this._handleCardClick(this._name, this._image)
+        );
     }
 }

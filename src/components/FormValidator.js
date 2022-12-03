@@ -72,7 +72,9 @@ class FormValidator {
     _setEventListeners() {
         this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
-            const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+            const errorElement = this._formElement.querySelector(
+                `.${inputElement.id}-error`
+            );
             inputElement.addEventListener("input", () => {
                 this._toggleInputErrorState(inputElement, errorElement);
                 this._toggleButtonState();
