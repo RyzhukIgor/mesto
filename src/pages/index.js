@@ -1,15 +1,15 @@
-import './pages/index.css'; // добавьте импорт главного файла стилей
+import './index.css'; // добавьте импорт главного файла стилей
 
-import Card from "../src/components/Card.js";
+import Card from "../components/Card.js";
 import {
     FormValidator,
     configValidation,
-} from "../src/components/FormValidator.js";
-import { initialCards } from "../src/components/utils.js";
-import Section from "../src/components/Section.js";
-import { PopupWithImage } from "../src/components/PopupWithImage.js";
-import PopupWithForm from "../src/components/PopupWithForm.js";
-import UserInfo from "../src/components/UserInfo.js";
+} from "../components/FormValidator.js";
+import { initialCards } from "../utils/utils.js";
+import Section from "../components/Section.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 import {
     popupProfileOpenBtn,
     popupAddImageBtn,
@@ -17,7 +17,7 @@ import {
     nameInput,
     jobInput,
     formElementNewImage,
-} from "../src/components/constants/constants.js";
+} from "../utils/constants.js";
 
 const popupLargeImage = new PopupWithImage(".popup_type_reveal-image");
 popupLargeImage.setEventListeners();
@@ -42,13 +42,14 @@ const popupEditProfile = new PopupWithForm(".profile-popup", {
 });
 popupEditProfile.setEventListeners();
 
-function handleProfileFormSubmit(popup) {
-    nameInput.value = userInfo.getUserInfo().username;
-    jobInput.value = userInfo.getUserInfo().description;
+function openProfilePopup(popup) {
+    const {username, description} =  userInfo.getUserInfo()
+    nameInput.value = username;
+    jobInput.value = description;
     popup.open();
 }
 popupProfileOpenBtn.addEventListener("click", () => {
-    handleProfileFormSubmit(popupEditProfile);
+    openProfilePopup(popupEditProfile);
 });
 
 function createCard(item) {
