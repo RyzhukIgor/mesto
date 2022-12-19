@@ -27,6 +27,19 @@ const api = new Api({
     },
 });
 
+function createCard(item, listItem) {
+    const cardElement = new Card(item, ".cards-template", handleCardClick).generateCard();
+    listItem.addItem(cardElement);
+}
+
+const cardList = new Section(
+    { renderer: (item) => {
+        createCard(item, cardList);
+        },
+    },
+    ".cards"
+);
+
 const popupLargeImage = new PopupWithImage(".popup_type_reveal-image");
 popupLargeImage.setEventListeners();
 
@@ -57,11 +70,17 @@ userInfo.setUserAvatar(profileInfo.avatar)
 
 const popupEditProfile = new PopupWithForm(".profile-popup", {
     callbackFormSubmit: (data) => {
-        userInfo.setUserInfo({
-            username: data.username,
-            description: data.activity,
-        });
-        popupEditProfile.close();
+        api.editUserProfile(data)
+        .then((userData) => {
+            userInfo.setUserInfo({
+                username: userData.username,
+                description: userData.activity,
+            });
+            popupEditProfile.close();
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     },
 });
 popupEditProfile.setEventListeners();
@@ -76,25 +95,18 @@ popupProfileOpenBtn.addEventListener("click", () => {
     openProfilePopup(popupEditProfile);
 });
 
-function createCard(item, cardList) {
-    const cardElement = new Card(item, userId, ".cards-template", handleCardClick).generateCard();
-    cardList.addItem(cardElement);
-}
-
-const cardList = new Section(
-    { renderer: (item) => {
-        createCard(item, cardList);
-        },
-    },
-    ".cards"
-);
-
 const saveNewCard = new PopupWithForm(".popup_type_add-image", {
-    callbackFormSubmit: (formValues) => {
-        loadInitialCards.addItem(
-            createCard({ name: formValues.username, link: formValues.activity })
-        );
-        saveNewCard.close();
+    callbackFormSubmit: (data) => {
+        api.addNewCard({
+         name: data.username, link: data.activity 
+        })
+        .then((card) => {
+            createCard(card, cardList);
+            saveNewCard.close();
+        })
+        .catch ((err) => {
+            console.log(err)
+        })
     },
 });
 saveNewCard.setEventListeners();

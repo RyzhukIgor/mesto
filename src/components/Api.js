@@ -3,7 +3,7 @@ export default class Api {
         this._baseUrl = baseUrl;
         this._headers = headers;
     }
-
+    //можно использовать async
     getUserInfoProfile() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers

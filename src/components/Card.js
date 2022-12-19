@@ -1,15 +1,9 @@
 export default class Card {
-    constructor(data, userId, templateSelector, handleCardClick, handleCardDelete, handleCardlike, handleCardDeleteLike) {
+    constructor(data, templateSelector, handleCardClick) {
         this._name = data.name;
         this._image = data.link;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
-        this._handleCardDelete = handleCardDelete;
-        this._handleCardlike = handleCardlike;
-        this._handleCardDeleteLike = handleCardDeleteLike;
-        this._id = data._id;
-        this._userId = userId;
-        this._ownerid = data.ownerid._id;
     }
 
     _getTemplate() {
