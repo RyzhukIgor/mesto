@@ -18,6 +18,7 @@ import {
     formElementNewImage,
 } from "../utils/constants.js";
 import Api from "../components/Api.js";
+import popupDeleteCard from '../components/popupDeleteCard.js';
 
 const api = new Api({
     baseUrl: "https://mesto.nomoreparties.co/v1/cohort-56",
@@ -28,7 +29,7 @@ const api = new Api({
 });
 
 function createCard(item, listItem) {
-    const cardElement = new Card(item, ".cards-template", handleCardClick).generateCard();
+    const cardElement = new Card(item, userId, ".cards-template", handleCardClick, handleCardDelete, handleCardLike, handleCardDeleteLike).generateCard();
     listItem.addItem(cardElement);
 }
 
@@ -46,6 +47,30 @@ popupLargeImage.setEventListeners();
 const handleCardClick = function (name, image) {
     popupLargeImage.open(name, image);
 };
+const handleCardDelete = function (cardId, card) {
+return popupDeleteImage.open(cardId, card)
+};
+
+const handleCardLike = function (cardId, card) {
+    api.putLikeCard(cardId)
+    .then((res) => {
+        card.likeCard(res);
+    })
+    .catch((err) => {
+        console.log(err)
+    });
+}
+
+const handleCardDeleteLike = function (cardId, card) {
+    api.deleteLikeCard(cardId)
+    .then((res) => {
+        card.likeCard(res);
+    })
+    .catch((err) => {
+        console.log(err)
+    });
+}
+
 
 const userInfo = new UserInfo({
     usernameSelector: ".profile__title",
@@ -110,6 +135,21 @@ const saveNewCard = new PopupWithForm(".popup_type_add-image", {
     },
 });
 saveNewCard.setEventListeners();
+
+const popupDeleteImage = new popupDeleteCard (".popup-confirm-delete", {
+    callbackFormSubmit: (cardId, card) => {
+        api.deleteCard(cardId)
+        .then(() => {
+            card.deleteCard();
+            popupDeleteImage.close(); 
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+});
+popupDeleteImage.setEventListeners();
+
 popupAddImageBtn.addEventListener("click", () => {
     saveNewCard.open();
     validationFormAddImage.disabledButton();
