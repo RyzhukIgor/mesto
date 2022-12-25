@@ -29,12 +29,11 @@ export default class PopupWithForm extends Popup {
     }
 
     showProcessSaving(loading) {
-        if(loading) {
-            this._formBtn.textContent = this._formBtn.textContent + '...';
+        if (loading) {
+            this._formBtn.textContent = this._formBtn.textContent + "...";
         } else {
             this._formBtn.textContent = this._formBtnTextContent;
         }
-        
     }
 
     close() {
