@@ -4,7 +4,7 @@ export default class popupDeleteCard extends Popup {
     constructor(popupSelector, {callbackSubmit}) {
         super(popupSelector);
         this._callbackSubmit = callbackSubmit;
-        this._popupForm = this._popup.querySelector(".popup_form");
+        this._popupForm = this._popup.querySelector(".popup__form");
     }
 
     setEventListeners() {
@@ -12,7 +12,7 @@ export default class popupDeleteCard extends Popup {
      
         this._popupForm.addEventListener("submit", (evt) => {
             evt.preventDefault();
-            this._callbackSubmit();
+            this._callbackSubmit(this._cardId, this._card);
         });
     }
 
