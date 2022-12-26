@@ -14,15 +14,15 @@ export default class Api {
     getUserInfoProfile() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers,
-        }).then(res => {
-        return this._getResponse(res);
+        }).then((res) => {
+            return this._getResponse(res);
         });
     }
 
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
             headers: this._headers,
-        }).then(res => {
+        }).then((res) => {
             return this._getResponse(res);
         });
     }
@@ -35,20 +35,17 @@ export default class Api {
                 name: userProfile.username,
                 about: userProfile.activity,
             }),
-        }).then(res => {
+        }).then((res) => {
             return this._getResponse(res);
         });
     }
 
-    addNewCard(cardData) {
+    addNewCard({ name, link }) {
         return fetch(`${this._baseUrl}/cards`, {
             method: "POST",
             headers: this._headers,
-            body: JSON.stringify({
-                name: cardData.name,
-                link: cardData.link,
-            }),
-        }).then(res => {
+            body: JSON.stringify({ name, link }),
+        }).then((res) => {
             return this._getResponse(res);
         });
     }
@@ -57,7 +54,7 @@ export default class Api {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
             method: "DELETE",
             headers: this._headers,
-        }).then(res => {
+        }).then((res) => {
             return this._getResponse(res);
         });
     }
@@ -66,7 +63,7 @@ export default class Api {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: "PUT",
             headers: this._headers,
-        }).then(res => {
+        }).then((res) => {
             return this._getResponse(res);
         });
     }
@@ -75,7 +72,7 @@ export default class Api {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: "DELETE",
             headers: this._headers,
-        }).then(res => {
+        }).then((res) => {
             return this._getResponse(res);
         });
     }
@@ -87,7 +84,7 @@ export default class Api {
             body: JSON.stringify({
                 avatar: avatarLink.avatar,
             }),
-        }).then(res => {
+        }).then((res) => {
             return this._getResponse(res);
         });
     }

@@ -152,14 +152,14 @@ popupProfileOpenBtn.addEventListener("click", () => {
 });
 
 const popupAddCard = new PopupWithForm(".popup_type_add-image", {
-    callbackFormSubmit: (data) => {
+    callbackFormSubmit: (formValues) => {
         popupAddCard.showProcessSaving(true);
         api.addNewCard({
-            name: data.username,
-            link: data.activity,
+            name: formValues.username,
+            link: formValues.activity
         })
             .then((card) => {
-                createCard(card, cardList);
+                cardList.addItem(createCard(card));
                 popupAddCard.close();
             })
             .catch((err) => {
