@@ -1,10 +1,26 @@
-# Проект: ![alt tag](https://raw.githubusercontent.com/RyzhukIgor/mesto/b8f156a2da1e181af78ffff57a98a18185b7e9c0/images/logo.svg)
-### В данном проекте разработан 6й этап над сервисом Mesto: интерактивной страницей, куда можно добавлять фотографии, удалять их и ставить лайки, вводить данные в валидируемую форму, проект собран в вебпак, реализована работа с сервером - загрузка данных пользователя, карточки и лайки.
-#### :inbox_tray: __Стек:__ :outbox_tray:
-html, css, javascript
-#### :pushpin: __в проекте применялись:__ :pushpin:
-flex, grid-layot, адаптивная вёрстка; структура блоков, элементов и модификаторов по Nested Бэм; первая практика с ООП, нацеленная на рефакторинг кода добавления карточек и валидации форм;  
-Проработан дизайн страницы для ширины от 320 до 1280px начиная от Desktop first.    
+## Проект: ![alt tag](https://raw.githubusercontent.com/RyzhukIgor/mesto/b8f156a2da1e181af78ffff57a98a18185b7e9c0/images/logo.svg)  
+<img src="https://github.com/RyzhukIgor/mesto/blob/main/src/images/mesto.gif">  
+
+:open_file_folder:[Мой проект на GitHub Pages](https://ryzhukigor.github.io/mesto/)  
+
+## В данном проекте велась разработка над сервисом Mesto: интерактивной страницей, в которой можно добавлять фотографии, удалять их и ставить лайки, вводить данные в валидируемую форму. Проект собран в вебпак, реализована работа с сервером - загрузка данных пользователя, карточки и лайки. 
+
+## :inbox_tray: __Стек:__ :outbox_tray:  
+  * HTML 5;
+  * CSS 3;
+  * JavaScript;
+## :pushpin: __в проекте применялись:__ :pushpin:  
+  * Flexbox;
+  * Адаптивная вёрстка;
+  * Grid Layout
+  * Media queries
+  * Nested БЭМ;
+  * Семантическая разметка;
+  * Popup;
+  * ООП;
+  * Валидация форм;  
+   
 Макет использован с [Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-:open_file_folder:[Мой проект на GitHub Pages](https://ryzhukigor.github.io/mesto/)
+
+
